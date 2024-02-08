@@ -1,9 +1,6 @@
-json
+simplejson
 tiktoken
 numpy
-collections
-os
 openai
-dotenv
+python-dotenv
 gradio
-time

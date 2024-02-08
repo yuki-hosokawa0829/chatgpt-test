@@ -17,7 +17,9 @@ message_history = [
 ]
 
 # ChatGPTモデルの指定
-model = "ft:gpt-3.5-turbo-0613:personal::8p547PXT"
+#model = "ft:gpt-3.5-turbo-0613:personal::8p547PXT"
+#model = "ft:gpt-3.5-turbo-0613:personal::8pHWRuC6"
+model = "ft:gpt-3.5-turbo-1106:personal::8pczsXuo"
 
 # 日付取得
 date = time.strftime('%Y%m%d')

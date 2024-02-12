@@ -1,2 +1,8 @@
 **/.env
 **/log/**.txt
+**/variables.tf
+*.lock.hcl
+*.tfstate
+*.tfstate.backup
+*.tfplan
+**/.terraform/*

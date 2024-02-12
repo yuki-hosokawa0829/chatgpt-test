@@ -9,11 +9,10 @@ client = OpenAI(
     api_key = os.environ.get("OPENAI_API_KEY")
 )
 
-#model = "gpt-3.5-turbo-1106"
-model = "ft:gpt-3.5-turbo-0613:personal::8p547PXT"
+model = "ft:gpt-3.5-turbo-1106:personal::8pczsXuo"
 
 # 学習用データのファイルパス
-uploaded_file_id = "file-xNMhnFEnqrVgwmCwXRSUKWha"
+uploaded_file_id = "file-w3naoHHvxwmHB8rYzt9Aiqx0"
 
 FineTune = client.fine_tuning.jobs.create(
     training_file = uploaded_file_id,    # アップロードしたファイルのID
@@ -21,4 +20,4 @@ FineTune = client.fine_tuning.jobs.create(
 )
 
 # 出力
-print(FineTune)
+#print(FineTune)

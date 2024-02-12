@@ -1,0 +1,41 @@
+# service
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+---
+# deployment based on the nginx image
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-container
+          image: nginx
+          ports:
+          - containerPort: 80
+          resources:
+            requests:
+             memory: "200Mi"
+             cpu: "500m"
+            limits:
+             memory: "400Mi"
+             cpu: "1000m"

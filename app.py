@@ -19,7 +19,8 @@ message_history = [
 # ChatGPTモデルの指定
 #model = "ft:gpt-3.5-turbo-0613:personal::8p547PXT"
 #model = "ft:gpt-3.5-turbo-0613:personal::8pHWRuC6"
-model = "ft:gpt-3.5-turbo-1106:personal::8pczsXuo"
+#model = "ft:gpt-3.5-turbo-1106:personal::8pczsXuo"
+model = "ft:gpt-3.5-turbo-1106:personal::8pzqQsqj"
 
 # 日付取得
 date = time.strftime('%Y%m%d')
@@ -78,8 +79,9 @@ def chat(user_msg):
 with gr.Blocks() as demo:
     # チャットボットUI処理
     chatbot = gr.Chatbot()
-    input = gr.Textbox(show_label=False, placeholder="あべしに質問").style(container=False)
+    #input = gr.Textbox(show_label=False, placeholder="あべしに質問").style(container=False)
+    input = gr.Textbox(show_label=False, placeholder="あべしに質問")
     input.submit(fn=chat, inputs=input, outputs=chatbot) # メッセージ送信されたら、AIと会話してチャット欄に全会話内容を表示
     input.submit(fn=lambda: "", inputs=None, outputs=input) # （上記に加えて）入力欄をクリア
 
-demo.launch(share=True)
+demo.launch(server_name="0.0.0.0")

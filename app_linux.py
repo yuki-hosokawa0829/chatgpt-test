@@ -2,13 +2,15 @@ import gradio as gr
 import os
 import time
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import AzureOpenAI
 
 # 環境変数の読み込み
 load_dotenv()
 
-client = OpenAI(
-    api_key = os.environ.get("OPENAI_API_KEY")
+client = AzureOpenAI(
+    api_key = os.environ.get("AZURE_OPENAI_API_KEY"),
+    azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT"),
+    api_version = "2023-12-01-preview"
 )
 
 # 会話履歴用リスト型変数
@@ -20,7 +22,7 @@ message_history = [
 #model = "ft:gpt-3.5-turbo-0613:personal::8p547PXT"
 #model = "ft:gpt-3.5-turbo-0613:personal::8pHWRuC6"
 #model = "ft:gpt-3.5-turbo-1106:personal::8pczsXuo"
-model = "ft:gpt-3.5-turbo-1106:personal::8pzqQsqj"
+model = "custom-deployment"
 
 # 日付取得
 date = time.strftime('%Y%m%d')
@@ -76,4 +78,4 @@ with gr.Blocks() as demo:
     input.submit(fn=chat, inputs=input, outputs=chatbot) # メッセージ送信されたら、AIと会話してチャット欄に全会話内容を表示
     input.submit(fn=lambda: "", inputs=None, outputs=input) # （上記に加えて）入力欄をクリア
 
-demo.launch(share=True)
+demo.launch(server_name="0.0.0.0")

@@ -76,4 +76,4 @@ with gr.Blocks() as demo:
     input.submit(fn=chat, inputs=input, outputs=chatbot) # メッセージ送信されたら、AIと会話してチャット欄に全会話内容を表示
     input.submit(fn=lambda: "", inputs=None, outputs=input) # （上記に加えて）入力欄をクリア
 
-demo.launch(share=True)
+demo.launch()
